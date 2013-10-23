@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            border-collapse:collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <p><a href="{% url 'new_a' %}">Create new A</a></p>
+    <table style="border: 1px solid black">
+        <thead>
+            <tr>
+                <th>Field A</th>
+                <th>Field B</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for a in object_list %}
+            <tr>
+                <td>{{ a.field_a }}</td>
+                <td>{{ a.get_field_b_display }}</td>
+                <td><a href="{% url 'edit_a' a.pk %}">Edit</a> | <a href="{% url 'delete_a' a.pk %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
